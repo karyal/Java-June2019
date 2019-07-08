@@ -6,7 +6,6 @@
 package oop;
 
 public class Test1 {
-
     public static void main(String[] args) {
         int x;//Decalre
         x=10;//assign
@@ -16,5 +15,4 @@ public class Test1 {
         obj.setX(100);//assign
         System.out.println(obj.getX());//access
     }
-    
 }
