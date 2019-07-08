@@ -132,4 +132,9 @@ public class Student {
             this.result="FAIL";
         }
     }
+    public void processResult(){
+        calculateTotal();
+        calculateAverage();
+        calculateResult();
+    }
 }
