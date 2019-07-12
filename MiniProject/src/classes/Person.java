@@ -1,8 +1,8 @@
 package classes;
 
 public class Person {
-    private int id;
-    private String fullName;
+    protected int id;
+    protected String fullName;
     //constructors
     //getters()
     //setters()

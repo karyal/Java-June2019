@@ -1,6 +1,9 @@
 package test;
 import library.IO;
 import classes.Person;
+import classes.Student;
+import java.text.DecimalFormat;
+import library.Global;
 public class Test {
     public static void main(String[] args) {
         /*
@@ -47,7 +50,6 @@ public class Test {
         io.printMessage("Double", d1);
         io.newLine();
         io.printMessage("String", str1);
-        */
         
         //Person Test
         Person p=new Person();
@@ -57,5 +59,35 @@ public class Test {
         io.printMessage("Enter fullname : ");
         p.setFullName(io.readString());
         io.printMessage(p.toString());
+        */
+        
+        //create an object Student class
+        //read all values
+        int id=1;
+        String name="", grade="";
+        char section='A';
+        double m1=0, m2=0, m3=0, m4=0;
+        //read values
+        
+        Student s1=new Student(id, name, grade, section, m1, m2, m3, m4);
+        s1.prucessResult();
+        System.out.println(s1);
+        
+        Student []students=new Student[Global.MAX_STUDENTS];
+        for(int i=0; i<Global.MAX_STUDENTS; i++){
+            System.out.println("Student "+(i+1)+" Details");
+            //input all values
+            //print message for id
+            //read id
+            // ....reads all values
+            Student s=new Student(id, name, grade, section, m1, m2, m3, m4);
+            students[i]=s;
+        }
+        //process
+        //print
+        
+        
+        
+        
     }
 }
