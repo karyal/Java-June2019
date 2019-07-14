@@ -68,23 +68,41 @@ public class Test {
         char section='A';
         double m1=0, m2=0, m3=0, m4=0;
         //read values
-        
-        Student s1=new Student(id, name, grade, section, m1, m2, m3, m4);
-        s1.prucessResult();
-        System.out.println(s1);
-        
+        IO io=new IO();
         Student []students=new Student[Global.MAX_STUDENTS];
         for(int i=0; i<Global.MAX_STUDENTS; i++){
             System.out.println("Student "+(i+1)+" Details");
-            //input all values
-            //print message for id
-            //read id
-            // ....reads all values
+            io.printMessage("Enter id ");
+            id=io.readInteger();
+            io.printMessage("Enter name");
+            name=io.readString();
+            io.printMessage("Enter grade");
+            grade=io.readString();
+            io.printMessage("Enter section");
+            section=io.readCharacter();
+            io.printMessage("Enter Mark-1");
+            m1=io.readDouble();
+            io.printMessage("Enter Mark-2");
+            m2=io.readDouble();
+            io.printMessage("Enter Mark-3");
+            m3=io.readDouble();
+            io.printMessage("Enter Mark-4");
+            m4=io.readDouble();
             Student s=new Student(id, name, grade, section, m1, m2, m3, m4);
             students[i]=s;
         }
-        //process
+        //Process
+        for(int i=0; i<Global.MAX_STUDENTS; i++){
+            Student s=students[i];
+            s.prucessResult();
+            students[i]=s;
+        }
+        
         //print
+        for(int i=0; i<Global.MAX_STUDENTS; i++){
+            Student s=students[i];
+            System.out.println(s);
+        }
         
         
         
