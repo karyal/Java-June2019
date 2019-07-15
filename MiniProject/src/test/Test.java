@@ -1,4 +1,5 @@
 package test;
+
 import library.IO;
 import classes.Person;
 import classes.Student;
@@ -103,9 +104,5 @@ public class Test {
             Student s=students[i];
             System.out.println(s);
         }
-        
-        
-        
-        
     }
 }
