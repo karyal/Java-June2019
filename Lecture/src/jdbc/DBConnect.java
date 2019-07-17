@@ -2,18 +2,24 @@ package jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class DBConnect {
-    String url="jdbc:mysql://localhost:3306/db_training";
+    String url="jdbc:mysql://192.168.103.126:3306/db_training";
     String user="admin";
-    String pw="nepal123";
+    String pw="admin123";
     
     public DBConnect(){
         try{
             Class.forName("org.gjt.mm.mysql.Driver");//load driver
             Connection conn=DriverManager.getConnection(url, user, pw);
             System.out.println("Connect database sucessfully");
+            //insert into tbl_person(id, name, adress) values(1,'Name1','Address1');
+            String sql="insert into tbl_person(id, name, adress) values(1,'Name1','Address1');";
             //Inser, Update, Delete, Or Select
+            PreparedStatement pstat=conn.prepareStatement(sql);
+            pstat.executeUpdate(); //insert, update, delete
+            System.out.println("Insert record sucessfully");
             conn.close();
             System.out.println("Database connection closed sucessfully");
         }
