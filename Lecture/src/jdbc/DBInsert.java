@@ -23,7 +23,6 @@ public class DBInsert {
         try{
             Class.forName("org.gjt.mm.mysql.Driver");//load driver
             Connection conn=DriverManager.getConnection(url, user, pw);
-            System.out.println("Connect database sucessfully");
             
             System.out.println("Enter id : ");
             id=new Scanner(System.in).nextInt();
@@ -42,12 +41,37 @@ public class DBInsert {
             pstat.executeUpdate(); //insert, update, delete
             System.out.println("Insert record sucessfully");
             conn.close();
-            System.out.println("Database connection closed sucessfully");
+            
         }
         catch(Exception ex){
             System.out.println("Error : "+ex);
         }
     }
+    
+    
+    public DBInsert(int id, String name, String address){
+        try{
+            Class.forName("org.gjt.mm.mysql.Driver");//load driver
+            Connection conn=DriverManager.getConnection(url, user, pw);
+            
+            //insert into tbl_person(id, name, adress) values(1,'Name1','Address1');
+            String sql="insert into tbl_person(id, name, address) values(?, ?, ?);";
+            //Inser, Update, Delete, Or Select
+            PreparedStatement pstat=conn.prepareStatement(sql);
+            pstat.setInt(1, id);
+            pstat.setString(2, name);
+            pstat.setString(3, address);
+            pstat.executeUpdate(); //insert, update, delete
+            System.out.println("Insert record sucessfully");
+            conn.close();
+            
+        }
+        catch(Exception ex){
+            System.out.println("Error : "+ex);
+        }
+    }
+    
+    
     public static void main(String[] args) {
         new DBInsert();
     }

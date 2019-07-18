@@ -14,12 +14,6 @@ public class DBConnect {
             Class.forName("org.gjt.mm.mysql.Driver");//load driver
             Connection conn=DriverManager.getConnection(url, user, pw);
             System.out.println("Connect database sucessfully");
-            //insert into tbl_person(id, name, adress) values(1,'Name1','Address1');
-            String sql="insert into tbl_person(id, name, adress) values(1,'Name1','Address1');";
-            //Inser, Update, Delete, Or Select
-            PreparedStatement pstat=conn.prepareStatement(sql);
-            pstat.executeUpdate(); //insert, update, delete
-            System.out.println("Insert record sucessfully");
             conn.close();
             System.out.println("Database connection closed sucessfully");
         }

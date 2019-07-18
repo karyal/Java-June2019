@@ -9,20 +9,26 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Scanner;
 
-public class DBSelect {
+public class DBSearch {
     String url="jdbc:mysql://192.168.103.126:3306/db_training";
     String user="admin";
     String pw="admin123";
+    int id=0;
     
-    public DBSelect(){
+    public DBSearch(){
         try{
+            System.out.println("Enter id : ");
+            id=new Scanner(System.in).nextInt();
+            
             Class.forName("org.gjt.mm.mysql.Driver");//load driver
             Connection conn=DriverManager.getConnection(url, user, pw);
+            System.out.println("Connect database sucessfully");
             //insert into tbl_person(id, name, adress) values(1,'Name1','Address1');
-            String sql="SELECT * FROM `tbl_person`";
-            //Inser, Update, Delete, Or Select
+            String sql="SELECT * FROM tbl_person where id=?";
             PreparedStatement pstat=conn.prepareStatement(sql);
+            pstat.setInt(1, id);
             ResultSet rs=pstat.executeQuery(); //select
             System.out.println("ID\tNAME\t\tADDRESS");
             while(rs.next()==true){//if record in rs
@@ -30,12 +36,12 @@ public class DBSelect {
             }
             System.out.println("Select and display record(s) sucessfully");
             conn.close();
-           }
+        }
         catch(Exception ex){
             System.out.println("Error : "+ex);
         }
     }
     public static void main(String[] args) {
-        new DBSelect();
+        new DBSearch();
     }
 }
