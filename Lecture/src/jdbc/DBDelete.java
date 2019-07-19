@@ -15,14 +15,12 @@ public class DBDelete {
     String user="admin";
     String pw="admin123";
     
-    int id=0;
-    
-    public DBDelete(){
+    public void deletePerson(){
         try{
             Class.forName("org.gjt.mm.mysql.Driver");//load driver
             Connection conn=DriverManager.getConnection(url, user, pw);
             System.out.println("Enter id : ");
-            id=new Scanner(System.in).nextInt();
+            int id=new Scanner(System.in).nextInt();
             //insert into tbl_person(id, name, adress) values(1,'Name1','Address1');
             String sql="delete from tbl_person where id=?";
             //Inser, Update, Delete, Or Select
@@ -36,6 +34,28 @@ public class DBDelete {
             System.out.println("Error : "+ex);
         }
     }
+    
+    public boolean deletePerson(int id){
+        boolean res=false;
+        try{
+            Class.forName("org.gjt.mm.mysql.Driver");//load driver
+            Connection conn=DriverManager.getConnection(url, user, pw);
+            //insert into tbl_person(id, name, adress) values(1,'Name1','Address1');
+            String sql="delete from tbl_person where id=?";
+            //Inser, Update, Delete, Or Select
+            PreparedStatement pstat=conn.prepareStatement(sql);
+            pstat.setInt(1, id);
+            pstat.executeUpdate(); //insert, update, delete
+            System.out.println("Delete record sucessfully");
+            conn.close();
+            res=true;
+        }
+        catch(Exception ex){
+            System.out.println("Error : "+ex);
+        }
+        return(res);
+    }
+    
     public static void main(String[] args) {
         new DBDelete();
     }

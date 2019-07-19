@@ -19,7 +19,7 @@ public class DBUpdate {
     String name="";
     String address="";
     
-    public DBUpdate(){
+    public void updatePerson(){
         try{
             Class.forName("org.gjt.mm.mysql.Driver");//load driver
             Connection conn=DriverManager.getConnection(url, user, pw);
@@ -44,6 +44,30 @@ public class DBUpdate {
             System.out.println("Error : "+ex);
         }
     }
+    
+    public boolean updatePerson(Person p){
+        boolean res=false;
+        try{
+            Class.forName("org.gjt.mm.mysql.Driver");//load driver
+            Connection conn=DriverManager.getConnection(url, user, pw);
+            //insert into tbl_person(id, name, adress) values(1,'Name1','Address1');
+            String sql="update tbl_person set name=?, address=? where id=?";
+            //Inser, Update, Delete, Or Select
+            PreparedStatement pstat=conn.prepareStatement(sql);
+            pstat.setString(1, p.getName());
+            pstat.setString(2, p.getAddress());
+            pstat.setInt(3, p.getId());
+            pstat.executeUpdate(); //insert, update, delete
+            System.out.println("Update record sucessfully");
+            conn.close();
+            res=true;
+        }
+        catch(Exception ex){
+            System.out.println("Error : "+ex);
+        }
+        return(res);
+    }
+    
     public static void main(String[] args) {
         new DBUpdate();
     }

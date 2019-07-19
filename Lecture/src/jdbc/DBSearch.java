@@ -17,7 +17,7 @@ public class DBSearch {
     String pw="admin123";
     int id=0;
     
-    public DBSearch(){
+    public void searchPerson(){
         try{
             System.out.println("Enter id : ");
             id=new Scanner(System.in).nextInt();
@@ -40,6 +40,28 @@ public class DBSearch {
         catch(Exception ex){
             System.out.println("Error : "+ex);
         }
+    }
+    
+    public Person searchPerson(int id){
+        Person person=new Person();
+        try{
+            Class.forName("org.gjt.mm.mysql.Driver");//load driver
+            Connection conn=DriverManager.getConnection(url, user, pw);
+            //insert into tbl_person(id, name, adress) values(1,'Name1','Address1');
+            String sql="SELECT * FROM tbl_person where id=?";
+            PreparedStatement pstat=conn.prepareStatement(sql);
+            pstat.setInt(1, id);
+            ResultSet rs=pstat.executeQuery(); //select
+            while(rs.next()==true){//if record in rs
+                person =new Person(rs.getInt(1), rs.getString(2), rs.getString(3));
+            }
+            System.out.println("Select and display record(s) sucessfully");
+            conn.close();
+        }
+        catch(Exception ex){
+            System.out.println("Error : "+ex);
+        }
+        return(person);
     }
     public static void main(String[] args) {
         new DBSearch();
