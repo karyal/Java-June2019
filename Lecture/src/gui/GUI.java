@@ -32,6 +32,7 @@ public class GUI implements ActionListener{
     JComboBox cmb1;
     JList lst1;
     JButton btn_save;
+    JButton btn_search;
     
     public GUI(){
         frame=new JFrame();
@@ -79,6 +80,11 @@ public class GUI implements ActionListener{
         btn_save=new JButton();
         btn_save.setText("Save");
         btn_save.addActionListener(this);
+        
+        btn_search=new JButton();
+        btn_search.setText("Search");
+        btn_search.addActionListener(this);
+        
         //frame.add(menu_bar1);
         //frame.add(txt_password);
         //frame.add(txt_comment);
@@ -92,6 +98,8 @@ public class GUI implements ActionListener{
         frame.add(cmb1);
         frame.add(lst1);
         frame.add(btn_save);
+        frame.add(btn_search);
+        
         frame.setVisible(true);
     }
     
@@ -127,8 +135,13 @@ public class GUI implements ActionListener{
            else{
                System.out.println("Error to save record");
            }
-           
            System.out.println(id+" "+gender+" "+hb1+" "+hb2+" "+age_grp+" "+address);
         }
+        else if(e.getSource()==btn_search){
+            System.out.println("Searching.......");
+            int id=Integer.parseInt(txt_id.getText());
+            
+        }
+        
     }
 }
