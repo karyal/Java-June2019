@@ -59,7 +59,7 @@ public class GUI implements ActionListener{
         txt_comment = new JTextArea(5, 20);
         txt_comment.setText("<Comment>");
         
-        rb1= new JRadioButton("Male", true);
+        rb1= new JRadioButton("Male");
         rb2= new JRadioButton("Female");
         
         ButtonGroup bg = new ButtonGroup();
@@ -67,7 +67,7 @@ public class GUI implements ActionListener{
         bg.add(rb2);
         
         ch1=new JCheckBox("Reading");
-        ch2=new JCheckBox("Playing", true);
+        ch2=new JCheckBox("Playing");
         
         String[] str={"1-14","15-29","30-44","45+"};
         cmb1=new JComboBox(str);
@@ -140,7 +140,23 @@ public class GUI implements ActionListener{
         else if(e.getSource()==btn_search){
             System.out.println("Searching.......");
             int id=Integer.parseInt(txt_id.getText());
+            Person p = new DB_Person().searchRecord(id);
+            /*
+            int id; 
+            String gender; 
+            int reading; 
+            int playing; 
+            String age_group; 
+            String address;
+            */
+            System.out.println(p.getGender());
             
+            if(p.getGender().equals("Male")){
+                rb1.setSelected(true);
+            }
+            else{
+                rb2.setSelected(true);
+            }
         }
         
     }

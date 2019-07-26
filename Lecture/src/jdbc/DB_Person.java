@@ -55,15 +55,9 @@ public class DB_Person {
             Class.forName("org.gjt.mm.mysql.Driver");//load driver
             Connection conn=DriverManager.getConnection(url, user, pw);
             /*
-            int id;
-            String gender;
-            int reading;
-            int playing;
-            String age_group;
-            String address;
+            int id; String gender; int reading; int playing; String age_group; String address;
             */
             String sql="select * from tbl_person WHERE id=?";
-            //Inser, Update, Delete, Or Select
             PreparedStatement pstat=conn.prepareStatement(sql);
             pstat.setInt(1, id);
             ResultSet rs = pstat.executeQuery();
