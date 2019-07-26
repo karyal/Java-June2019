@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2019 at 02:23 PM
+-- Generation Time: Jul 26, 2019 at 02:13 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -25,6 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_login`
+--
+
+CREATE TABLE `tbl_login` (
+  `login_name` varchar(50) NOT NULL,
+  `login_password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_login`
+--
+
+INSERT INTO `tbl_login` (`login_name`, `login_password`) VALUES
+('admin', 'admin'),
+('user', 'user');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_person`
 --
 
@@ -42,11 +61,17 @@ CREATE TABLE `tbl_person` (
 --
 
 INSERT INTO `tbl_person` (`id`, `gender`, `reading`, `playing`, `age_group`, `address`) VALUES
-(1, 'Male', 1, 1, '15-29', 'Lalitpur');
+(1, 'Female', 1, 1, '15-29', 'Lalitpur');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tbl_login`
+--
+ALTER TABLE `tbl_login`
+  ADD PRIMARY KEY (`login_name`);
 
 --
 -- Indexes for table `tbl_person`

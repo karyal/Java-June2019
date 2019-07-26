@@ -3,6 +3,7 @@ package login;
 public class LoginInfo {
     Login login;
     Message message;
+    
     public LoginInfo() {
         this.login = null;
         this.message = null;

@@ -66,6 +66,11 @@ public class GUI_Login implements ActionListener{
             String tmp_password=txt_login_password.getText();
             Login login=new Login(tmp_name, tmp_password);
             
+            DBLogin db_login=new DBLogin();
+            LoginInfo login_result= db_login.login(login);
+            
+            lbl_message.setText(login_result.message.getMseeage());
+            System.out.println(login_result.message.getMseeage());
         }
     }
 }
