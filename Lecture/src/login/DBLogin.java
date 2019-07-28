@@ -22,6 +22,10 @@ public class DBLogin {
             pstat.setString(1, login.getLogin_name());
             pstat.setString(2, login.getLogin_password());
             ResultSet rs=pstat.executeQuery();
+            
+            login_info.setLogin(login);
+            login_info.setMessage(new Message("False"));
+            
             while(rs.next()){
                 login_info.setLogin(login);
                 login_info.setMessage(new Message("True"));

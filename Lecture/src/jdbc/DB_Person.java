@@ -9,11 +9,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class DB_Person {
     String url="jdbc:mysql://localhost/test";
     String user="root";
     String pw="";
+    
     public boolean saveRecord(Person p){
         boolean res=false;
         try{
@@ -76,4 +78,6 @@ public class DB_Person {
         }
         return(p);
     } 
+    
+    
 }
