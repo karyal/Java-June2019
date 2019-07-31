@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/java/Java-June2019/Lecture/src/gui/GUI_JTable.java</file>
-            <file>file:/E:/java/Java-June2019/Lecture/src/jdbc/DBPerson.java</file>
+            <file>file:/E:/java/Java-June2019/Lecture/src/collection/Person.java</file>
+            <file>file:/E:/java/Java-June2019/Lecture/src/collection/Student.java</file>
+            <file>file:/E:/java/Java-June2019/Lecture/src/collection/ArrayListTest.java</file>
         </group>
     </open-files>
 </project-private>
